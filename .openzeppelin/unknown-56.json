@@ -1,0 +1,191 @@
+{
+  "manifestVersion": "3.2",
+  "proxies": [
+    {
+      "address": "0x870AbbF88c090cdB3ACaDf7A46eE11EF4dBE14B2",
+      "txHash": "0x3ea619352c2e51c923869e958b37f0cdf4ee0b8e93f5abedc6b6df799949ef3f",
+      "kind": "uups"
+    }
+  ],
+  "impls": {
+    "566bbf8745deefcc3561c776cb534cb19cd0594cd5ffdd10e351dc2c47262f06": {
+      "address": "0x4EEBC7563B771d2F1Fd955Ec0Aa6B5Fb663abe26",
+      "txHash": "0x92179bd368f372630eae14b7f78cb294df6cfd8468bf1c130c13a300836935e4",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_uint8",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:62",
+            "retypedFrom": "bool"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:67"
+          },
+          {
+            "contract": "ERC1967UpgradeUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/ERC1967/ERC1967UpgradeUpgradeable.sol:211"
+          },
+          {
+            "contract": "UUPSUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol:107"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:36"
+          },
+          {
+            "contract": "OwnableUpgradeable",
+            "label": "_owner",
+            "type": "t_address",
+            "src": "../@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:22"
+          },
+          {
+            "contract": "OwnableUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)49_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:87"
+          },
+          {
+            "contract": "PausableUpgradeable",
+            "label": "_paused",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol:29"
+          },
+          {
+            "contract": "PausableUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)49_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol:102"
+          },
+          {
+            "contract": "EuphoriaBettingUpgradeable",
+            "label": "merkleRoot",
+            "type": "t_bytes32",
+            "src": "../project:/contracts/EuphoriaBettingUpgradeable.sol:36"
+          },
+          {
+            "contract": "EuphoriaBettingUpgradeable",
+            "label": "matches",
+            "type": "t_mapping(t_uint256,t_struct(Match)3119_storage)",
+            "src": "../project:/contracts/EuphoriaBettingUpgradeable.sol:37"
+          },
+          {
+            "contract": "EuphoriaBettingUpgradeable",
+            "label": "balances",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))",
+            "src": "../project:/contracts/EuphoriaBettingUpgradeable.sol:38"
+          },
+          {
+            "contract": "EuphoriaBettingUpgradeable",
+            "label": "bets",
+            "type": "t_mapping(t_bytes32,t_bool)",
+            "src": "../project:/contracts/EuphoriaBettingUpgradeable.sol:39"
+          },
+          {
+            "contract": "EuphoriaBettingUpgradeable",
+            "label": "commissionBalance",
+            "type": "t_mapping(t_address,t_uint256)",
+            "src": "../project:/contracts/EuphoriaBettingUpgradeable.sol:41"
+          },
+          {
+            "contract": "EuphoriaBettingUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../project:/contracts/EuphoriaBettingUpgradeable.sol:340"
+          }
+        ],
+        "types": {
+          "t_bytes32": {
+            "label": "bytes32"
+          },
+          "t_mapping(t_uint256,t_struct(Match)3119_storage)": {
+            "label": "mapping(uint256 => struct EuphoriaBettingUpgradeable.Match)"
+          },
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_struct(Match)3119_storage": {
+            "label": "struct EuphoriaBettingUpgradeable.Match",
+            "members": [
+              {
+                "label": "id",
+                "type": "t_uint256"
+              },
+              {
+                "label": "odds",
+                "type": "t_array(t_struct(Odds)3108_storage)dyn_storage"
+              },
+              {
+                "label": "startTimestamp",
+                "type": "t_uint256"
+              },
+              {
+                "label": "isFinished",
+                "type": "t_bool"
+              }
+            ]
+          },
+          "t_array(t_struct(Odds)3108_storage)dyn_storage": {
+            "label": "struct EuphoriaBettingUpgradeable.Odds[]"
+          },
+          "t_struct(Odds)3108_storage": {
+            "label": "struct EuphoriaBettingUpgradeable.Odds",
+            "members": [
+              {
+                "label": "matchResult",
+                "type": "t_enum(MatchResult)4227"
+              },
+              {
+                "label": "value",
+                "type": "t_uint256"
+              }
+            ]
+          },
+          "t_bool": {
+            "label": "bool"
+          },
+          "t_enum(MatchResult)4227": {
+            "label": "enum LibBet.MatchResult",
+            "members": [
+              "HOME",
+              "AWAY",
+              "DRAW"
+            ]
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+            "label": "mapping(address => mapping(address => uint256))"
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)"
+          },
+          "t_mapping(t_bytes32,t_bool)": {
+            "label": "mapping(bytes32 => bool)"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]"
+          },
+          "t_uint8": {
+            "label": "uint8"
+          }
+        }
+      }
+    }
+  }
+}

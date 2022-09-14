@@ -1,0 +1,832 @@
+{
+  "manifestVersion": "3.2",
+  "proxies": [
+    {
+      "address": "0x2118D0A02b53616Dc8f336Ffd57369e4633623D5",
+      "kind": "uups"
+    }
+  ],
+  "impls": {
+    "95219478ea34637c2185c009089669f381f647d02c92a62c3e3478e8bf0e52a5": {
+      "address": "0x23D1eee468D0c5DDDb775f937fe67A832B8a3B10",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_uint8",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:62",
+            "retypedFrom": "bool"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:67"
+          },
+          {
+            "contract": "ERC1967UpgradeUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/ERC1967/ERC1967UpgradeUpgradeable.sol:211"
+          },
+          {
+            "contract": "UUPSUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol:107"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:36"
+          },
+          {
+            "contract": "OwnableUpgradeable",
+            "label": "_owner",
+            "type": "t_address",
+            "src": "../@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:22"
+          },
+          {
+            "contract": "OwnableUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)49_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:94"
+          },
+          {
+            "contract": "PausableUpgradeable",
+            "label": "_paused",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol:29"
+          },
+          {
+            "contract": "PausableUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)49_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol:116"
+          },
+          {
+            "contract": "EuphoriaBettingUpgradeable",
+            "label": "merkleRoot",
+            "type": "t_bytes32",
+            "src": "../project:/contracts/EuphoriaBettingUpgradeable.sol:36"
+          },
+          {
+            "contract": "EuphoriaBettingUpgradeable",
+            "label": "matches",
+            "type": "t_mapping(t_uint256,t_struct(Match)2912_storage)",
+            "src": "../project:/contracts/EuphoriaBettingUpgradeable.sol:37"
+          },
+          {
+            "contract": "EuphoriaBettingUpgradeable",
+            "label": "balances",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))",
+            "src": "../project:/contracts/EuphoriaBettingUpgradeable.sol:38"
+          },
+          {
+            "contract": "EuphoriaBettingUpgradeable",
+            "label": "bets",
+            "type": "t_mapping(t_bytes32,t_bool)",
+            "src": "../project:/contracts/EuphoriaBettingUpgradeable.sol:39"
+          },
+          {
+            "contract": "EuphoriaBettingUpgradeable",
+            "label": "commissionBalance",
+            "type": "t_mapping(t_address,t_uint256)",
+            "src": "../project:/contracts/EuphoriaBettingUpgradeable.sol:41"
+          },
+          {
+            "contract": "EuphoriaBettingUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../project:/contracts/EuphoriaBettingUpgradeable.sol:340"
+          }
+        ],
+        "types": {
+          "t_bytes32": {
+            "label": "bytes32"
+          },
+          "t_mapping(t_uint256,t_struct(Match)2912_storage)": {
+            "label": "mapping(uint256 => struct EuphoriaBettingUpgradeable.Match)"
+          },
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_struct(Match)2912_storage": {
+            "label": "struct EuphoriaBettingUpgradeable.Match",
+            "members": [
+              {
+                "label": "id",
+                "type": "t_uint256"
+              },
+              {
+                "label": "odds",
+                "type": "t_array(t_struct(Odds)2901_storage)dyn_storage"
+              },
+              {
+                "label": "startTimestamp",
+                "type": "t_uint256"
+              },
+              {
+                "label": "isFinished",
+                "type": "t_bool"
+              }
+            ]
+          },
+          "t_array(t_struct(Odds)2901_storage)dyn_storage": {
+            "label": "struct EuphoriaBettingUpgradeable.Odds[]"
+          },
+          "t_struct(Odds)2901_storage": {
+            "label": "struct EuphoriaBettingUpgradeable.Odds",
+            "members": [
+              {
+                "label": "matchResult",
+                "type": "t_enum(MatchResult)5150"
+              },
+              {
+                "label": "value",
+                "type": "t_uint256"
+              }
+            ]
+          },
+          "t_bool": {
+            "label": "bool"
+          },
+          "t_enum(MatchResult)5150": {
+            "label": "enum LibBet.MatchResult",
+            "members": [
+              "HOME",
+              "AWAY",
+              "DRAW"
+            ]
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+            "label": "mapping(address => mapping(address => uint256))"
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)"
+          },
+          "t_mapping(t_bytes32,t_bool)": {
+            "label": "mapping(bytes32 => bool)"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]"
+          },
+          "t_uint8": {
+            "label": "uint8"
+          }
+        }
+      }
+    },
+    "22ced13aaf01730ab748b13ab927facc5c846d4a47dea72a6b0338c2c6d89deb": {
+      "address": "0xcfBA0F51E2476a9b7aac9b17c96B1929505dE380",
+      "txHash": "0x33cba63ac259e7173337853d44de5c569931719c7c179786de26fe5b8b7cc549",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_uint8",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:62",
+            "retypedFrom": "bool"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:67"
+          },
+          {
+            "contract": "ERC1967UpgradeUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/ERC1967/ERC1967UpgradeUpgradeable.sol:211"
+          },
+          {
+            "contract": "UUPSUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol:107"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:36"
+          },
+          {
+            "contract": "OwnableUpgradeable",
+            "label": "_owner",
+            "type": "t_address",
+            "src": "../@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:22"
+          },
+          {
+            "contract": "OwnableUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)49_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:94"
+          },
+          {
+            "contract": "PausableUpgradeable",
+            "label": "_paused",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol:29"
+          },
+          {
+            "contract": "PausableUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)49_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol:116"
+          },
+          {
+            "contract": "EuphoriaBettingUpgradeableV2",
+            "label": "merkleRoot",
+            "type": "t_bytes32",
+            "src": "../project:/contracts/EuphoriaBettingUpgradeableV2.sol:36"
+          },
+          {
+            "contract": "EuphoriaBettingUpgradeableV2",
+            "label": "matches",
+            "type": "t_mapping(t_uint256,t_struct(Match)4001_storage)",
+            "src": "../project:/contracts/EuphoriaBettingUpgradeableV2.sol:37"
+          },
+          {
+            "contract": "EuphoriaBettingUpgradeableV2",
+            "label": "balances",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))",
+            "src": "../project:/contracts/EuphoriaBettingUpgradeableV2.sol:38"
+          },
+          {
+            "contract": "EuphoriaBettingUpgradeableV2",
+            "label": "bets",
+            "type": "t_mapping(t_bytes32,t_bool)",
+            "src": "../project:/contracts/EuphoriaBettingUpgradeableV2.sol:39"
+          },
+          {
+            "contract": "EuphoriaBettingUpgradeableV2",
+            "label": "commissionBalance",
+            "type": "t_mapping(t_address,t_uint256)",
+            "src": "../project:/contracts/EuphoriaBettingUpgradeableV2.sol:41"
+          },
+          {
+            "contract": "EuphoriaBettingUpgradeableV2",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../project:/contracts/EuphoriaBettingUpgradeableV2.sol:358"
+          }
+        ],
+        "types": {
+          "t_bytes32": {
+            "label": "bytes32"
+          },
+          "t_mapping(t_uint256,t_struct(Match)4001_storage)": {
+            "label": "mapping(uint256 => struct EuphoriaBettingUpgradeableV2.Match)"
+          },
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_struct(Match)4001_storage": {
+            "label": "struct EuphoriaBettingUpgradeableV2.Match",
+            "members": [
+              {
+                "label": "id",
+                "type": "t_uint256"
+              },
+              {
+                "label": "odds",
+                "type": "t_array(t_struct(Odds)3990_storage)dyn_storage"
+              },
+              {
+                "label": "startTimestamp",
+                "type": "t_uint256"
+              },
+              {
+                "label": "isFinished",
+                "type": "t_bool"
+              }
+            ]
+          },
+          "t_array(t_struct(Odds)3990_storage)dyn_storage": {
+            "label": "struct EuphoriaBettingUpgradeableV2.Odds[]"
+          },
+          "t_struct(Odds)3990_storage": {
+            "label": "struct EuphoriaBettingUpgradeableV2.Odds",
+            "members": [
+              {
+                "label": "matchResult",
+                "type": "t_enum(MatchResult)5150"
+              },
+              {
+                "label": "value",
+                "type": "t_uint256"
+              }
+            ]
+          },
+          "t_bool": {
+            "label": "bool"
+          },
+          "t_enum(MatchResult)5150": {
+            "label": "enum LibBet.MatchResult",
+            "members": [
+              "HOME",
+              "AWAY",
+              "DRAW"
+            ]
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+            "label": "mapping(address => mapping(address => uint256))"
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)"
+          },
+          "t_mapping(t_bytes32,t_bool)": {
+            "label": "mapping(bytes32 => bool)"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]"
+          },
+          "t_uint8": {
+            "label": "uint8"
+          }
+        }
+      }
+    },
+    "69c81cc8de71c11662bdf18102e6548f325d9fbc9efd22d10a04841905f670e8": {
+      "address": "0xd762ef3F19cDd039C21Fb75a53889B8A3a4dC616",
+      "txHash": "0xac57df80779502a44578dd002388b299c40a2521554b1e2e85458ccd4312fd4e",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_uint8",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:62",
+            "retypedFrom": "bool"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:67"
+          },
+          {
+            "contract": "ERC1967UpgradeUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/ERC1967/ERC1967UpgradeUpgradeable.sol:211"
+          },
+          {
+            "contract": "UUPSUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol:107"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:36"
+          },
+          {
+            "contract": "OwnableUpgradeable",
+            "label": "_owner",
+            "type": "t_address",
+            "src": "../@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:22"
+          },
+          {
+            "contract": "OwnableUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)49_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:94"
+          },
+          {
+            "contract": "PausableUpgradeable",
+            "label": "_paused",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol:29"
+          },
+          {
+            "contract": "PausableUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)49_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol:116"
+          },
+          {
+            "contract": "EuphoriaBettingUpgradeableV2",
+            "label": "merkleRoot",
+            "type": "t_bytes32",
+            "src": "../project:/contracts/EuphoriaBettingUpgradeableV2.sol:40"
+          },
+          {
+            "contract": "EuphoriaBettingUpgradeableV2",
+            "label": "matches",
+            "type": "t_mapping(t_uint256,t_struct(Match)3621_storage)",
+            "src": "../project:/contracts/EuphoriaBettingUpgradeableV2.sol:41"
+          },
+          {
+            "contract": "EuphoriaBettingUpgradeableV2",
+            "label": "balances",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))",
+            "src": "../project:/contracts/EuphoriaBettingUpgradeableV2.sol:42"
+          },
+          {
+            "contract": "EuphoriaBettingUpgradeableV2",
+            "label": "bets",
+            "type": "t_mapping(t_bytes32,t_bool)",
+            "src": "../project:/contracts/EuphoriaBettingUpgradeableV2.sol:43"
+          },
+          {
+            "contract": "EuphoriaBettingUpgradeableV2",
+            "label": "commissionBalance",
+            "type": "t_mapping(t_address,t_uint256)",
+            "src": "../project:/contracts/EuphoriaBettingUpgradeableV2.sol:45"
+          },
+          {
+            "contract": "EuphoriaBettingUpgradeableV2",
+            "label": "matchesV2",
+            "type": "t_mapping(t_uint256,t_mapping(t_uint256,t_struct(MatchV2)5408_storage))",
+            "src": "../project:/contracts/EuphoriaBettingUpgradeableV2.sol:46"
+          },
+          {
+            "contract": "EuphoriaBettingUpgradeableV2",
+            "label": "__gap",
+            "type": "t_array(t_uint256)49_storage",
+            "src": "../project:/contracts/EuphoriaBettingUpgradeableV2.sol:516"
+          }
+        ],
+        "types": {
+          "t_bytes32": {
+            "label": "bytes32"
+          },
+          "t_mapping(t_uint256,t_struct(Match)3621_storage)": {
+            "label": "mapping(uint256 => struct EuphoriaBettingUpgradeableV2.Match)"
+          },
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_struct(Match)3621_storage": {
+            "label": "struct EuphoriaBettingUpgradeableV2.Match",
+            "members": [
+              {
+                "label": "id",
+                "type": "t_uint256"
+              },
+              {
+                "label": "odds",
+                "type": "t_array(t_struct(Odds)3610_storage)dyn_storage"
+              },
+              {
+                "label": "startTimestamp",
+                "type": "t_uint256"
+              },
+              {
+                "label": "isFinished",
+                "type": "t_bool"
+              }
+            ]
+          },
+          "t_array(t_struct(Odds)3610_storage)dyn_storage": {
+            "label": "struct EuphoriaBettingUpgradeableV2.Odds[]"
+          },
+          "t_struct(Odds)3610_storage": {
+            "label": "struct EuphoriaBettingUpgradeableV2.Odds",
+            "members": [
+              {
+                "label": "matchResult",
+                "type": "t_enum(MatchResult)5259"
+              },
+              {
+                "label": "value",
+                "type": "t_uint256"
+              }
+            ]
+          },
+          "t_bool": {
+            "label": "bool"
+          },
+          "t_enum(MatchResult)5259": {
+            "label": "enum LibBet.MatchResult",
+            "members": [
+              "HOME",
+              "AWAY",
+              "DRAW"
+            ]
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+            "label": "mapping(address => mapping(address => uint256))"
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)"
+          },
+          "t_mapping(t_bytes32,t_bool)": {
+            "label": "mapping(bytes32 => bool)"
+          },
+          "t_mapping(t_uint256,t_mapping(t_uint256,t_struct(MatchV2)5408_storage))": {
+            "label": "mapping(uint256 => mapping(uint256 => struct LibMatch.MatchV2))"
+          },
+          "t_mapping(t_uint256,t_struct(MatchV2)5408_storage)": {
+            "label": "mapping(uint256 => struct LibMatch.MatchV2)"
+          },
+          "t_struct(MatchV2)5408_storage": {
+            "label": "struct LibMatch.MatchV2",
+            "members": [
+              {
+                "label": "id",
+                "type": "t_uint256"
+              },
+              {
+                "label": "typeId",
+                "type": "t_uint256"
+              },
+              {
+                "label": "odds",
+                "type": "t_array(t_struct(Odds)5395_storage)dyn_storage"
+              },
+              {
+                "label": "startTimestamp",
+                "type": "t_uint256"
+              },
+              {
+                "label": "isFinished",
+                "type": "t_bool"
+              }
+            ]
+          },
+          "t_array(t_struct(Odds)5395_storage)dyn_storage": {
+            "label": "struct LibMatch.Odds[]"
+          },
+          "t_struct(Odds)5395_storage": {
+            "label": "struct LibMatch.Odds",
+            "members": [
+              {
+                "label": "matchResult",
+                "type": "t_enum(MatchResult)5259"
+              },
+              {
+                "label": "value",
+                "type": "t_uint256"
+              }
+            ]
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          },
+          "t_uint8": {
+            "label": "uint8"
+          }
+        }
+      }
+    },
+    "972cbd7173b036203d9c2e7f88114c5446b302d2cd07ac1d7d370092dbd86821": {
+      "address": "0xcDeaf010B344c7FB762006cd18f08a8839eD9A06",
+      "txHash": "0x124c498c42c8ffa54da43537b9f0ee93dca234b1b74fa9eb58ae4047b6a3f154",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_uint8",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:62",
+            "retypedFrom": "bool"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:67"
+          },
+          {
+            "contract": "ERC1967UpgradeUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/ERC1967/ERC1967UpgradeUpgradeable.sol:211"
+          },
+          {
+            "contract": "UUPSUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol:107"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:36"
+          },
+          {
+            "contract": "OwnableUpgradeable",
+            "label": "_owner",
+            "type": "t_address",
+            "src": "../@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:22"
+          },
+          {
+            "contract": "OwnableUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)49_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:94"
+          },
+          {
+            "contract": "PausableUpgradeable",
+            "label": "_paused",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol:29"
+          },
+          {
+            "contract": "PausableUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)49_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol:116"
+          },
+          {
+            "contract": "EuphoriaBettingUpgradeableV2",
+            "label": "merkleRoot",
+            "type": "t_bytes32",
+            "src": "../project:/contracts/EuphoriaBettingUpgradeableV2.sol:40"
+          },
+          {
+            "contract": "EuphoriaBettingUpgradeableV2",
+            "label": "matches",
+            "type": "t_mapping(t_uint256,t_struct(Match)3621_storage)",
+            "src": "../project:/contracts/EuphoriaBettingUpgradeableV2.sol:41"
+          },
+          {
+            "contract": "EuphoriaBettingUpgradeableV2",
+            "label": "balances",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))",
+            "src": "../project:/contracts/EuphoriaBettingUpgradeableV2.sol:42"
+          },
+          {
+            "contract": "EuphoriaBettingUpgradeableV2",
+            "label": "bets",
+            "type": "t_mapping(t_bytes32,t_bool)",
+            "src": "../project:/contracts/EuphoriaBettingUpgradeableV2.sol:43"
+          },
+          {
+            "contract": "EuphoriaBettingUpgradeableV2",
+            "label": "commissionBalance",
+            "type": "t_mapping(t_address,t_uint256)",
+            "src": "../project:/contracts/EuphoriaBettingUpgradeableV2.sol:45"
+          },
+          {
+            "contract": "EuphoriaBettingUpgradeableV2",
+            "label": "matchesV2",
+            "type": "t_mapping(t_uint256,t_mapping(t_uint256,t_struct(MatchV2)5417_storage))",
+            "src": "../project:/contracts/EuphoriaBettingUpgradeableV2.sol:46"
+          },
+          {
+            "contract": "EuphoriaBettingUpgradeableV2",
+            "label": "__gap",
+            "type": "t_array(t_uint256)49_storage",
+            "src": "../project:/contracts/EuphoriaBettingUpgradeableV2.sol:516"
+          }
+        ],
+        "types": {
+          "t_bytes32": {
+            "label": "bytes32"
+          },
+          "t_mapping(t_uint256,t_struct(Match)3621_storage)": {
+            "label": "mapping(uint256 => struct EuphoriaBettingUpgradeableV2.Match)"
+          },
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_struct(Match)3621_storage": {
+            "label": "struct EuphoriaBettingUpgradeableV2.Match",
+            "members": [
+              {
+                "label": "id",
+                "type": "t_uint256"
+              },
+              {
+                "label": "odds",
+                "type": "t_array(t_struct(Odds)3610_storage)dyn_storage"
+              },
+              {
+                "label": "startTimestamp",
+                "type": "t_uint256"
+              },
+              {
+                "label": "isFinished",
+                "type": "t_bool"
+              }
+            ]
+          },
+          "t_array(t_struct(Odds)3610_storage)dyn_storage": {
+            "label": "struct EuphoriaBettingUpgradeableV2.Odds[]"
+          },
+          "t_struct(Odds)3610_storage": {
+            "label": "struct EuphoriaBettingUpgradeableV2.Odds",
+            "members": [
+              {
+                "label": "matchResult",
+                "type": "t_enum(MatchResult)5268"
+              },
+              {
+                "label": "value",
+                "type": "t_uint256"
+              }
+            ]
+          },
+          "t_bool": {
+            "label": "bool"
+          },
+          "t_enum(MatchResult)5268": {
+            "label": "enum LibBet.MatchResult",
+            "members": [
+              "HOME",
+              "AWAY",
+              "DRAW"
+            ]
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+            "label": "mapping(address => mapping(address => uint256))"
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)"
+          },
+          "t_mapping(t_bytes32,t_bool)": {
+            "label": "mapping(bytes32 => bool)"
+          },
+          "t_mapping(t_uint256,t_mapping(t_uint256,t_struct(MatchV2)5417_storage))": {
+            "label": "mapping(uint256 => mapping(uint256 => struct LibMatch.MatchV2))"
+          },
+          "t_mapping(t_uint256,t_struct(MatchV2)5417_storage)": {
+            "label": "mapping(uint256 => struct LibMatch.MatchV2)"
+          },
+          "t_struct(MatchV2)5417_storage": {
+            "label": "struct LibMatch.MatchV2",
+            "members": [
+              {
+                "label": "id",
+                "type": "t_uint256"
+              },
+              {
+                "label": "typeId",
+                "type": "t_uint256"
+              },
+              {
+                "label": "odds",
+                "type": "t_array(t_struct(Odds)5404_storage)dyn_storage"
+              },
+              {
+                "label": "startTimestamp",
+                "type": "t_uint256"
+              },
+              {
+                "label": "isFinished",
+                "type": "t_bool"
+              }
+            ]
+          },
+          "t_array(t_struct(Odds)5404_storage)dyn_storage": {
+            "label": "struct LibMatch.Odds[]"
+          },
+          "t_struct(Odds)5404_storage": {
+            "label": "struct LibMatch.Odds",
+            "members": [
+              {
+                "label": "matchResult",
+                "type": "t_enum(MatchResult)5268"
+              },
+              {
+                "label": "value",
+                "type": "t_uint256"
+              }
+            ]
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          },
+          "t_uint8": {
+            "label": "uint8"
+          }
+        }
+      }
+    }
+  }
+}
