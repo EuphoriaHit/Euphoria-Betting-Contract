@@ -9,6 +9,7 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts-upgradeable/utils/cryptography/ECDSAUpgradeable.sol";
 import "./libraries/LibBet.sol";
 import "./libraries/LibMatch.sol";
+import "@openzeppelin/contracts-upgradeable/token/ERC20/utils/SafeERC20Upgradeable.sol";
 
 contract EuphoriaBettingUpgradeableV2 is
     UUPSUpgradeable,
@@ -16,6 +17,7 @@ contract EuphoriaBettingUpgradeableV2 is
     PausableUpgradeable
 {
     using ECDSAUpgradeable for bytes32;
+    using SafeERC20Upgradeable for IERC20;
 
     enum PaymentType {
         BALANCE,
@@ -38,16 +40,16 @@ contract EuphoriaBettingUpgradeableV2 is
     }
 
     bytes32 public merkleRoot;
-    mapping(uint256 => Match) private matches;
+    mapping(uint256 => Match) private matches; // Deprecated: Has used in V1 version
     mapping(address => mapping(address => uint256)) public balances;
     mapping(bytes32 => bool) public bets;
 
     mapping(address => uint256) public commissionBalance;
     mapping(uint256 => mapping(uint256 => LibMatch.MatchV2)) private matchesV2;
 
-    event Bet(LibBet.Bet bet, uint256 odds);
-    event MatchAddition(Match[] matches);
-    event MatchCancel(uint256[] matches);
+    event Bet(LibBet.Bet bet, uint256 odds); // Deprecated: Has used in V1 version
+    event MatchAddition(Match[] matches); // Deprecated: Has used in V1 version
+    event MatchCancel(uint256[] matches); // Deprecated: Has used in V1 version
 
     event BetV2(LibBet.BetV2 bet, uint256 odds);
     event MatchAdditionV2(LibMatch.MatchV2[] matches);
@@ -59,10 +61,9 @@ contract EuphoriaBettingUpgradeableV2 is
         LibBet.MatchResult result
     );
 
-    event MatchFinished(uint256 matchId, LibBet.MatchResult result);
+    event MatchFinished(uint256 matchId, LibBet.MatchResult result); // Deprecated: Has used in V1 version
     event RewardsDistributed(Reward[] rewards);
     event MerkleRootUpdated(bytes32 merkleRoot);
-    event CommissionBalanceUpdatedBy(LibBet.TokenAsset[] commissions);
 
     event Withdrawal(address bettor, address token, uint256 amount);
 
@@ -134,11 +135,6 @@ contract EuphoriaBettingUpgradeableV2 is
             balances[msg.sender][bet.asset.addr] -= bet.asset.amount;
         } else if (paymentType == PaymentType.WALLET) {
             IERC20 bettorToken = IERC20(bet.asset.addr);
-            require(
-                bettorToken.allowance(msg.sender, address(this)) >=
-                    bet.asset.amount,
-                "Insufficient allowance"
-            );
             bettorToken.transferFrom(
                 msg.sender,
                 address(this),
@@ -147,18 +143,13 @@ contract EuphoriaBettingUpgradeableV2 is
         } else if (paymentType == PaymentType.WALLET_BALANCE) {
             if (bettorBalance < bet.asset.amount) {
                 IERC20 bettorToken = IERC20(bet.asset.addr);
-                require(
-                    bettorToken.allowance(msg.sender, address(this)) >=
-                        bet.asset.amount - bettorBalance,
-                    "Insufficient allowance"
-                );
 
+                balances[msg.sender][bet.asset.addr] = 0;
                 bettorToken.transferFrom(
                     msg.sender,
                     address(this),
                     bet.asset.amount - bettorBalance
                 );
-                balances[msg.sender][bet.asset.addr] = 0;
             } else {
                 balances[msg.sender][bet.asset.addr] -= bet.asset.amount;
             }
@@ -201,11 +192,6 @@ contract EuphoriaBettingUpgradeableV2 is
             balances[msg.sender][bet.asset.addr] -= bet.asset.amount;
         } else if (paymentType == PaymentType.WALLET) {
             IERC20 bettorToken = IERC20(bet.asset.addr);
-            require(
-                bettorToken.allowance(msg.sender, address(this)) >=
-                    bet.asset.amount,
-                "Insufficient allowance"
-            );
             bettorToken.transferFrom(
                 msg.sender,
                 address(this),
@@ -214,18 +200,13 @@ contract EuphoriaBettingUpgradeableV2 is
         } else if (paymentType == PaymentType.WALLET_BALANCE) {
             if (bettorBalance < bet.asset.amount) {
                 IERC20 bettorToken = IERC20(bet.asset.addr);
-                require(
-                    bettorToken.allowance(msg.sender, address(this)) >=
-                        bet.asset.amount - bettorBalance,
-                    "Insufficient allowance"
-                );
 
+                balances[msg.sender][bet.asset.addr] = 0;
                 bettorToken.transferFrom(
                     msg.sender,
                     address(this),
                     bet.asset.amount - bettorBalance
                 );
-                balances[msg.sender][bet.asset.addr] = 0;
             } else {
                 balances[msg.sender][bet.asset.addr] -= bet.asset.amount;
             }
@@ -287,13 +268,8 @@ contract EuphoriaBettingUpgradeableV2 is
 
     function addFunds(LibBet.TokenAsset memory asset) external whenNotPaused {
         IERC20 token = IERC20(asset.addr);
-        require(
-            token.allowance(msg.sender, address(this)) >= asset.amount,
-            "Insufficient allowance"
-        );
-
-        token.transferFrom(msg.sender, address(this), asset.amount);
         balances[msg.sender][asset.addr] += asset.amount;
+        token.transferFrom(msg.sender, address(this), asset.amount);
     }
 
     function addRewards(Reward[] calldata rewards)
@@ -320,8 +296,8 @@ contract EuphoriaBettingUpgradeableV2 is
             "Insufficient token amount"
         );
 
-        IERC20(token).transfer(msg.sender, amount);
         balances[msg.sender][token] -= amount;
+        IERC20(token).transfer(msg.sender, amount);
 
         emit Withdrawal(msg.sender, token, amount);
     }
@@ -352,6 +328,7 @@ contract EuphoriaBettingUpgradeableV2 is
         _unpause();
     }
 
+    // Deprecated: Has used in V1 version
     function getMatchData(uint256 matchId)
         external
         view
@@ -402,6 +379,7 @@ contract EuphoriaBettingUpgradeableV2 is
         emit MatchAdditionSingle(newMatch);
     }
 
+    // Deprecated: Has used in V1 version
     function getOdds(LibBet.Bet calldata bet)
         internal
         view
