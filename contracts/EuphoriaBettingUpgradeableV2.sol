@@ -9,7 +9,7 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts-upgradeable/utils/cryptography/ECDSAUpgradeable.sol";
 import "./libraries/LibBet.sol";
 import "./libraries/LibMatch.sol";
-import "@openzeppelin/contracts-upgradeable/token/ERC20/utils/SafeERC20Upgradeable.sol";
+import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 
 contract EuphoriaBettingUpgradeableV2 is
     UUPSUpgradeable,
@@ -17,7 +17,7 @@ contract EuphoriaBettingUpgradeableV2 is
     PausableUpgradeable
 {
     using ECDSAUpgradeable for bytes32;
-    using SafeERC20Upgradeable for IERC20;
+    using SafeERC20 for IERC20;
 
     enum PaymentType {
         BALANCE,
@@ -135,7 +135,7 @@ contract EuphoriaBettingUpgradeableV2 is
             balances[msg.sender][bet.asset.addr] -= bet.asset.amount;
         } else if (paymentType == PaymentType.WALLET) {
             IERC20 bettorToken = IERC20(bet.asset.addr);
-            bettorToken.transferFrom(
+            bettorToken.safeTransferFrom(
                 msg.sender,
                 address(this),
                 bet.asset.amount
@@ -145,7 +145,7 @@ contract EuphoriaBettingUpgradeableV2 is
                 IERC20 bettorToken = IERC20(bet.asset.addr);
 
                 balances[msg.sender][bet.asset.addr] = 0;
-                bettorToken.transferFrom(
+                bettorToken.safeTransferFrom(
                     msg.sender,
                     address(this),
                     bet.asset.amount - bettorBalance
@@ -192,7 +192,7 @@ contract EuphoriaBettingUpgradeableV2 is
             balances[msg.sender][bet.asset.addr] -= bet.asset.amount;
         } else if (paymentType == PaymentType.WALLET) {
             IERC20 bettorToken = IERC20(bet.asset.addr);
-            bettorToken.transferFrom(
+            bettorToken.safeTransferFrom(
                 msg.sender,
                 address(this),
                 bet.asset.amount
@@ -202,7 +202,7 @@ contract EuphoriaBettingUpgradeableV2 is
                 IERC20 bettorToken = IERC20(bet.asset.addr);
 
                 balances[msg.sender][bet.asset.addr] = 0;
-                bettorToken.transferFrom(
+                bettorToken.safeTransferFrom(
                     msg.sender,
                     address(this),
                     bet.asset.amount - bettorBalance
@@ -269,7 +269,7 @@ contract EuphoriaBettingUpgradeableV2 is
     function addFunds(LibBet.TokenAsset memory asset) external whenNotPaused {
         IERC20 token = IERC20(asset.addr);
         balances[msg.sender][asset.addr] += asset.amount;
-        token.transferFrom(msg.sender, address(this), asset.amount);
+        token.safeTransferFrom(msg.sender, address(this), asset.amount);
     }
 
     function addRewards(Reward[] calldata rewards)
@@ -280,7 +280,7 @@ contract EuphoriaBettingUpgradeableV2 is
         for (uint256 i; i < rewards.length; i++) {
             for (uint256 j; j < rewards[i].tokens.length; j++) {
                 IERC20 token = IERC20(rewards[i].tokens[j].addr);
-                token.transferFrom(
+                token.safeTransferFrom(
                     msg.sender,
                     address(this),
                     rewards[i].tokens[j].amount
@@ -297,7 +297,7 @@ contract EuphoriaBettingUpgradeableV2 is
         );
 
         balances[msg.sender][token] -= amount;
-        IERC20(token).transfer(msg.sender, amount);
+        IERC20(token).safeTransfer(msg.sender, amount);
 
         emit Withdrawal(msg.sender, token, amount);
     }
@@ -307,7 +307,7 @@ contract EuphoriaBettingUpgradeableV2 is
         LibBet.TokenAsset[] calldata assets
     ) external onlyOwner whenNotPaused {
         for (uint256 i; i < assets.length; i++) {
-            IERC20(assets[i].addr).transfer(recipient, assets[i].amount);
+            IERC20(assets[i].addr).safeTransfer(recipient, assets[i].amount);
             commissionBalance[assets[i].addr] -= assets[i].amount;
         }
     }
